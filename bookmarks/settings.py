@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Поместив приложение account в начало мы обеспечиваем приоритет использования шаблонов аутентификации приложения account
     'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -122,3 +123,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'dashboard' # Сообщает URL, на который перенаправляется пользователь после входа, если параметр GET != next
+
+LOGIN_URL = 'login' # URL куда перенаправить пользователя чтобы зарегистрировать его вход
+
+LOGOUT_URL = 'logout' # URL куда перенаправить пользователя чтобы зарегистрировать его выход
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
