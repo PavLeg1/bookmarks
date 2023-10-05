@@ -10,7 +10,10 @@
         Try again.
     </p>
     {% else %}
-    <p>Please, use the folowwing form to log-in: </p>
+    <p>Please, use the following form to log-in: 
+    
+        If you don't have an account - 
+        <a href="{% url "register" %}">register</a> 
     {% endif %}
     <div class="login-form">
         <form action="{% url 'login' %}" method="post">

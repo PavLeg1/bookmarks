@@ -131,3 +131,13 @@ LOGIN_URL = 'login' # URL куда перенаправить пользоват
 LOGOUT_URL = 'logout' # URL куда перенаправить пользователя чтобы зарегистрировать его выход
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Стандартный список хешеров паролей:
+# PASSWORD_HASHERS = [
+# 'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+# 'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+# 'django.contrib.auth.hashers.Argon2PasswordHasher',
+# 'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+# 'django.contrib.auth.hashers.ScryptPasswordHasher',
+# ]
