@@ -141,3 +141,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # 'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
 # 'django.contrib.auth.hashers.ScryptPasswordHasher',
 # ]
+
+
+#MEDIA_URL – это базовый URL-адрес,используемый для раздачи медиафайлов, закачанных пользователями на сайт.
+MEDIA_URL = 'media/'
+# MEDIA_ROOT – это локальный путь, где они находятся.
+MEDIA_ROOT = BASE_DIR / 'media'
