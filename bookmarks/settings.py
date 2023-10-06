@@ -130,7 +130,7 @@ LOGIN_URL = 'login' # URL куда перенаправить пользоват
 
 LOGOUT_URL = 'logout' # URL куда перенаправить пользователя чтобы зарегистрировать его выход
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 
 # Стандартный список хешеров паролей:
@@ -147,3 +147,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 MEDIA_URL = 'media/'
 # MEDIA_ROOT – это локальный путь, где они находятся.
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# Проверка остановится на первом бэкенде, который авторизует пользователя
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]

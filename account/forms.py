@@ -20,6 +20,7 @@ class UserRegistrationForm(forms.ModelForm):
         model = User
         fields = ['username', 'first_name', 'email']
 
+
     # Метод для проверки (по типу введите пароль еще раз) - если не совпадает, вызываем ошибку валидации
     def clean_password2(self):
         cd = self.cleaned_data
@@ -28,11 +29,29 @@ class UserRegistrationForm(forms.ModelForm):
         return cd['password2']
     
 
+    # Метод предотвращает создание двух пользователей с одинаковым мэйлом
+    def clean_email(self):
+        data = self.cleaned_data['emal']
+        if User.objects.filter(email=data).exists():
+            raise forms.ValidationError('Email already in use.')
+        return data
+
+    
+
 # Позволяет редактировать свое имя, фамилию, почтовый адрес (встроенные атрибуты модели User)
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
+
+    # Теперь пользователь не сможет отредактировать свой email на уже зарегистрированный
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        qs = User.objects.exclude(id=self.instance.id).filter(email=data)
+
+        if qs.exists():
+            raise forms.ValidationError(' Email already in use.')
+        return data
 
 
 # Позволяет пользователям редактировать данные профиля, сохраненные в конкретно-прикладной модели Profile
