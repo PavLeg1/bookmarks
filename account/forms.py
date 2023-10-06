@@ -31,7 +31,7 @@ class UserRegistrationForm(forms.ModelForm):
 
     # Метод предотвращает создание двух пользователей с одинаковым мэйлом
     def clean_email(self):
-        data = self.cleaned_data['emal']
+        data = self.cleaned_data['email']
         if User.objects.filter(email=data).exists():
             raise forms.ValidationError('Email already in use.')
         return data
