@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'images.apps.ImagesConfig',
+    'django_extensions',
+
 ]
 
 MIDDLEWARE = [
@@ -131,7 +133,7 @@ LOGIN_URL = 'login' # URL куда перенаправить пользоват
 
 LOGOUT_URL = 'logout' # URL куда перенаправить пользователя чтобы зарегистрировать его выход
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Стандартный список хешеров паролей:
@@ -155,3 +157,9 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
 ]
+
+
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type('application/javascript', '.js', True)
+    mimetypes.add_type('text/css', '.css', True)
